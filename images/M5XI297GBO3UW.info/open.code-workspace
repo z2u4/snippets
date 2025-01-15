@@ -16,7 +16,9 @@
         },
         "python.analysis.extraPaths": [
             "."
-        ],
-        "powershell.cwd": "moviepy generate thumbnail"
+        ]
+    },
+    "metadata" : {
+        "type" : "python"
     }
 }

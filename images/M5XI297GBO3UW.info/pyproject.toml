@@ -1,0 +1,16 @@
+[project]
+name = "dict-of-dicts"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "ZackaryW", email = "36378555+ZackaryW@users.noreply.github.com" }
+]
+dependencies = []
+requires-python = ">= 3.11"
+
+[tool.rye]
+managed = true
+virtual = true
+dev-dependencies = [
+    "pytest>=8.3.4",
+]
