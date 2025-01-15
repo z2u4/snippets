@@ -1,0 +1,24 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.pytest_cache": true,
+            "open.code-workspace": true
+        },
+        "python.analysis.extraPaths": [
+            "."
+        ]
+    },
+    "metadata" : {
+        "type" : "python"
+    }
+}

@@ -1,0 +1,160 @@
+{
+  "name": "masscodepp",
+  "displayName": "massCode plusplus",
+  "description": "better masscode assistant",
+  "version": "1.0.0",
+  "publisher": "Zackary W",
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "masscodepp-explorer",
+          "title": "massCodePP",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "masscodepp-explorer": [
+        {
+          "id": "masscodepp-snippets",
+          "name": "Snippets"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "masscodepp.refreshSnippets",
+        "title": "MassCodePP: Refresh Snippets",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "masscodepp.search",
+        "title": "MassCodePP: Search Snippets",
+        "icon": "$(search)"
+      },
+      {
+        "command": "masscodepp.simple-create",
+        "title": "MassCodePP: Create New Snippet",
+        "icon": "$(plus)"
+      },
+      {
+        "command": "masscodepp.setting",
+        "title": "MassCodePP: Customize Workspace Settings",
+        "icon": "$(settings)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "masscodepp.refreshSnippets",
+          "when": "view == masscodepp-snippets",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Masscode++",
+      "properties": {
+        "masscodepp": {
+          "type": "object",
+          "description": "massCode++ configuration",
+          "properties": {
+            "apiUrl": {
+              "type": "string",
+              "default": "http://localhost:3033",
+              "description": "API URL for Masscode++"
+            },
+            "tagFilter": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "include",
+                  "description": "Type of tag filter"
+                },
+                "tags": {
+                  "type": "array",
+                  "default": [],
+                  "description": "Tags to filter snippets"
+                }
+              }
+            },
+            "folderFilter": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "include",
+                  "description": "Type of folder filter"
+                },
+                "folders": {
+                  "type": "array",
+                  "default": [],
+                  "description": "Folders to filter snippets"
+                }
+              }
+            },
+            "notify": {
+              "type": "boolean",
+              "default": true,
+              "description": "Notify when a snippet is created"
+            },
+            "moreFilters": {
+              "type": "object",
+              "default": {},
+              "description": "Additional filters to apply to snippets"
+            }
+          }
+        }
+      }
+    }
+  },
+  "icon": "assets/logo.png",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "lint:fix": "eslint src --ext ts --fix",
+    "release": "bumpp -c 'build: release v' -t",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.66.0",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vscode/test-electron": "^2.1.3",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.11.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.2",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "strip-indent": "^4.0.0"
+  }
+}
